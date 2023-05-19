@@ -1,32 +1,49 @@
 <script>
+import DefaultButton from './DefaultButton.vue'
 export default {
+  components: { DefaultButton },
   props: {
     movie: {
       type: Object,
       required: true,
     },
   },
+  // methods: {
+  //   isTrucated() {
+  //     this.isOverflowed = ()
+  //   }
+  // }
 }
 </script>
 <template>
-  <v-card :key="movie.Title" class="card_base_layer" width="250" height="300">
-    <v-img :src="movie.Poster" height="200px" cover>
-      <!-- gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,1)" -->
+  <v-card :key="movie.Title" max-width="300" class="card_base_layer">
+    <v-img
+      class="background-img"
+      :src="movie.Poster"
+      gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,1)"
+      cover
+    >
+      <div class="date">
+        {{ movie.Year }}
+        <span class="rated">- {{ movie.Rated }}</span>
+      </div>
+      <v-container class="title-container pa-0 ma-0">
+        <v-row no-gutters>
+          <v-col style="word-break: break-word;" class="content" cols="7">
+            <div class="title">
+              {{ movie.Title }}
+            </div>
+          </v-col>
+        </v-row>
+      </v-container>
+
+      <v-card-text class="details">
+        <div class="content-plot">
+          <div class="title align-start">Plot</div>
+          {{ movie.Plot }}
+        </div>
+        <DefaultButton />
+      </v-card-text>
     </v-img>
-    <v-card-title>
-      <span class="text-subtitle-2">{{ movie.Title }}</span>
-      {{ movie.Year }}
-    </v-card-title>
-    <v-card-subtitle>{{ movie.Rated }} {{ movie.Genre }}</v-card-subtitle>
   </v-card>
 </template>
-<style lang="scss" scoped>
-.card_base_layer {
-  width: 400px;
-  background: #fff;
-  border-radius: 10px;
-  .title {
-    font-size: 20px;
-  }
-}
-</style>
