@@ -1,19 +1,29 @@
-<template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-</template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CenterPanel from './components/CenterPanel.vue'
+import LeftPanel from './components/LeftPanel.vue'
+import FilterHeader from '@/components/FilterHeader.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    CenterPanel,
+    LeftPanel,
+    FilterHeader,
+  },
 }
 </script>
 
+<template>
+  <!-- <v-app> -->
+  <v-layout>
+    <LeftPanel />
+    <v-main>
+      <FilterHeader />
+      <CenterPanel />
+    </v-main>
+  </v-layout>
+  <!-- </v-app> -->
+</template>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
