@@ -21,6 +21,7 @@ const isRecent = ref(localStorage.getItem('isRecent') == 'true' ? true : false)
 
 const lookUpWithKeywords = () => {
   localStorage.setItem('keyword', keyword.value)
+
   localStorage.setItem('isRecent', true)
 
   isRecent.value = true

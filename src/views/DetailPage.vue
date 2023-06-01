@@ -8,6 +8,8 @@ const props = defineProps({
   id: String,
 })
 
+const defaultImage = '../assets/shubham-dhage-WtolM5hsj14-unsplash.jpg'
+
 store.getMovieByID(props.id)
 </script>
 <template>
@@ -17,7 +19,13 @@ store.getMovieByID(props.id)
   >
     <v-row align-content="space-between">
       <v-col xs="12" md="4">
-        <v-card class="poster"><v-img :src="store.movie.Poster" /></v-card>
+        <v-card class="poster">
+          <v-img
+            :src="
+              store.movie.Poster == 'N/A' ? defaultImage : store.movie.Poster
+            "
+          />
+        </v-card>
       </v-col>
       <v-col xs="12" md="8" class="movie-data-wrapper">
         <v-card height="100%" class="movie-info-card">

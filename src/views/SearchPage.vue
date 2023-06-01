@@ -18,7 +18,7 @@ const store = moviesStore()
         <DisplayCard :movie="movie" />
       </v-col>
     </v-row>
-    <v-card height="90vh">
+    <v-card v-else height="90vh">
       <h1 class="welcome-text">
         Welcome to
       </h1>
