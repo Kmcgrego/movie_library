@@ -1,49 +1,61 @@
 <script>
-import DefaultButton from './DefaultButton.vue'
 export default {
-  components: { DefaultButton },
   props: {
     movie: {
       type: Object,
       required: true,
     },
   },
-  // methods: {
-  //   isTrucated() {
-  //     this.isOverflowed = ()
-  //   }
-  // }
 }
 </script>
 <template>
-  <v-card :key="movie.Title" max-width="300" class="card_base_layer">
-    <v-img
-      class="background-img"
-      :src="movie.Poster"
-      gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,1)"
-      cover
+  <router-link :to="{ name: 'Details', params: { id: movie.imdbID } }">
+    <v-card
+      :key="movie.Title"
+      max-width="300"
+      height="420"
+      class="card_base_layer"
     >
-      <div class="date">
-        {{ movie.Year }}
-        <span class="rated">- {{ movie.Rated }}</span>
-      </div>
-      <v-container class="title-container pa-0 ma-0">
-        <v-row no-gutters>
-          <v-col style="word-break: break-word;" class="content" cols="7">
-            <div class="title">
-              {{ movie.Title }}
-            </div>
-          </v-col>
-        </v-row>
-      </v-container>
+      <v-img
+        class="background-img"
+        :src="movie.Poster"
+        gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,1)"
+        cover
+      >
+        <v-container class="title-container pa-3">
+          <v-row align-content="end" no-gutters>
+            <v-col
+              style="word-break: break-word;"
+              class="content text-center"
+              cols="7"
+            >
+              <div class="title text-center">
+                {{ movie.Title }}
+              </div>
+            </v-col>
+          </v-row>
+        </v-container>
 
-      <v-card-text class="details">
-        <div class="content-plot">
-          <div class="title align-start">Plot</div>
-          {{ movie.Plot }}
+        <div class="details pa-1">
+          <v-container class="content-plot">
+            <v-row>
+              <v-col cols="12" class="date text-right">
+                {{ movie.Year }}
+                <br />
+                {{ movie.Type }}
+              </v-col>
+            </v-row>
+            <v-row justify="space-between" align="center">
+              <v-col cols="12">
+                <div class="text-left">{{ movie.Title }}</div>
+              </v-col>
+              <v-col class="action">
+                <v-btn>more details</v-btn>
+              </v-col>
+            </v-row>
+          </v-container>
         </div>
-        <DefaultButton />
-      </v-card-text>
-    </v-img>
-  </v-card>
+      </v-img>
+    </v-card>
+  </router-link>
 </template>

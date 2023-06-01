@@ -1,7 +1,174 @@
 @import './variables';
 
-.cards {
-  .title {
-    font-family: 'Poppins', sans-serif;
+.card_base_layer {
+  max-width: 160px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 1px 22px 44px rgba(0, 0, 0, 0.19);
+  transition: 0.6s;
+  border-radius: 2px;
+  position: relative;
+  display: flex;
+  height: 170px;
+  border-radius: 5px;
+  &:hover {
+    transform: translateY(-15px);
+    box-shadow: 1px 12px 34px rgba(0, 0, 0, 0.31);
+    .details {
+      opacity: 1;
+      transition-delay: 0.4s;
+      .actions {
+        opacity: 1;
+        transform: translateY(0%);
+        transition: 0.6s;
+        transition-delay: 1s;
+      }
+      .content-plot {
+        .text {
+          transform: translateY(0);
+          transition-delay: 0.6s;
+        }
+        .title {
+          transform: translateY(0);
+          transition-delay: 0.2s;
+        }
+      }
+    }
+    .year {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    .content {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+  }
+  .title-container {
+    bottom: -50%;
+    position: relative;
+
+    .title {
+      font-size: 44px;
+      font-family: 'Poppins', sans-serif;
+      overflow-wrap: break-word;
+      text-decoration: none;
+    }
+  }
+  .year {
+    font-size: 1rem;
+  }
+  .date {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #fff;
+    font-weight: 300;
+    font-size: 14px;
+    transition: 0.8s;
+
+    + .rated {
+      width: 12px;
+      vertical-align: baseline;
+      margin-left: 6px;
+    }
+  }
+  .content {
+    transition: 0.8s;
+    display: flex;
+    flex-wrap: wrap;
+    align-self: flex-end;
+    .title {
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      font-size: 1cqw;
+      font-weight: 500;
+      line-height: 25px;
+      margin-bottom: 12px;
+    }
+    .text {
+      width: 100%;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 300;
+    }
+  }
+  .details {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    background: rgba(0, 0, 0, 0.78);
+    color: #fff;
+    font-weight: 300;
+    opacity: 0;
+    transition: 0.8s;
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+
+    .action {
+      position: absolute;
+      bottom: 25%;
+      right: 0;
+      color: #fff;
+      font-size: 14px;
+      height: 25px;
+      transform: translateY(100%);
+      transition: 0.6s;
+      cursor: pointer;
+    }
+    .content-plot {
+      .title {
+        color: rgba(255, 255, 255, 0.6);
+        font-family: 'Poppins', sans-serif;
+        font-size: 22px;
+        font-weight: 500;
+        margin-bottom: 12px;
+        transform: translateY(-100%);
+        transition: 0.6s;
+      }
+      &_plot {
+        transform: translateY(100%);
+        transition: 0.6s;
+        color: rgba(255, 255, 255, 0.6);
+        font-weight: 300;
+        font-size: 14px;
+      }
+    }
+  }
+}
+.movie-panel-wrapper {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  padding: 6rem 4rem;
+}
+.poster {
+  max-height: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 0.8rem;
+  box-shadow: 0rem 2rem 5rem $black;
+}
+.movie-data-wrapper {
+  position: relative;
+
+  .movie-title {
+    font-size: 4rem;
+    font-weight: 200;
+    line-height: 1.2;
+    color: $black;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+    display: block;
+    word-break: break-word;
+    word-wrap: break-word;
   }
 }
